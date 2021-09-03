@@ -23,6 +23,7 @@ export class NavbarComponent implements OnInit {
 
   logout(){
     this.authenticationService.logout();
+    this.router.navigate(['/login']);
   }
   getTitle(){
     var titlee = this.location.prepareExternalUrl(this.location.path());

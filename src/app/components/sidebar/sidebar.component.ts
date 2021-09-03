@@ -20,10 +20,14 @@ declare interface RouteInfo {
 
 export const ROUTES: RouteInfo[] = [
   { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
-  { path: '/dashboard', title: 'Jogadores',  icon:'ni-single-02 text-yellow', class: '' },
-  { path: '/dashboard', title: 'Times',  icon:'ni-user-run text-blue', class: '' },
+  { path: '/campeonatos', title: 'Campeonatos',  icon:'ni-bullet-list-67 text-red', class: '' },
   { path: '/temporadas', title: 'Temporadas',  icon:'ni-calendar-grid-58 text-pink', class: '' },
-  { path: '/campeonatos', title: 'Campeonatos',  icon:'ni-bullet-list-67 text-red', class: '' }
+  { path: '/times', title: 'Times',  icon:'ni-user-run text-blue', class: '' },
+  { path: '/jogadores', title: 'Jogadores',  icon:'ni-single-02 text-yellow', class: '' },
+  { path: '/rodadas', title: 'Jogos e Rodadas',  icon:'ni-chart-pie-35 text-primary', class: '' }
+  
+  
+  
 ];
 
 

@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 //import { MatDialog } from '@angular/material/dialog';
-import { first } from 'rxjs';
+import { BehaviorSubject, first, Observable } from 'rxjs';
 //import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { AuthenticationService } from 'src/app/_services';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
+import { User } from 'src/app/_models';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,10 @@ import { Router } from '@angular/router';
   ]
 })
 export class LoginComponent implements OnInit, OnDestroy {
+  
   constructor(private authServices: AuthenticationService, private modalService: NgbModal, private router: Router) {}
+
+  
 
   closeResult = '';
   loginForm: FormGroup;
@@ -30,6 +34,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
   }
+
+  
 
   open() {
     

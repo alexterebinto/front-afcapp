@@ -1,4 +1,4 @@
 ﻿export class User {
     success: boolean;
-    token: string;
+    access_token: string;
 }

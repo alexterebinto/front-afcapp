@@ -24,11 +24,17 @@ export class AuthenticationService {
             email: username,
             password: password
         }
-        return this.http.post<any>(`${config.apiEndpoint}/login`, json)
+
+        // return this.http.post<any>(`${config.proxy}`+'?t=p&u='+`${config.apiEndpoint}/login`,json )
+        return this.http.post<any>(`${config.apiEndpoint}/login`,json )
             .pipe(map(user => {
-                // store user details and jwt token in local storage to keep user logged in between page refreshes
-                localStorage.setItem('currentUser', JSON.stringify(user));
-                this.currentUserSubject.next(user);
+                // login successful if there's a jwt token in the response
+                if (user) {
+                    console.log(user)
+                   localStorage.setItem('currentUser', JSON.stringify(user));
+                    this.currentUserSubject.next(user);
+                }
+
                 return user;
             }));
     }
@@ -37,5 +43,6 @@ export class AuthenticationService {
         // remove user from local storage and set current user to null
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
+        
     }
 }

@@ -33,7 +33,7 @@ const routes: Routes =[
       }
     ]
   }, {
-    path: '**',
+    path: '',
     redirectTo: 'dashboard',
     canActivate: [AuthGuard]
   }

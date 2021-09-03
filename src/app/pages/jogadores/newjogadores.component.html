@@ -1,0 +1,84 @@
+<div class="bgLoader" *ngIf="loading == true"><div class="bgWhite"><div class="bgSpinner"></div></div></div>
+<div class="header bg-gradient-dangerNew pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
+          <div class="row align-items-center">
+            <div class="col-8">
+              <h3 class="mb-0">Novo Jogador</h3>
+            </div>
+            <div class="col-4 text-right">
+              <a href="#!" class="btn btn-sm btn-primary" [routerLink]="['/jogadores']"> << Voltar</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <form>
+            <h6 class="heading-small text-muted mb-4">Informações</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="first_name">Nome do Jogador</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control form-control-alternative" [(ngModel)]="jogador.first_name">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="last_name">Sobrenome</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control form-control-alternative" [(ngModel)]="jogador.last_name">
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Foto do jogador</label>
+                    <input type="file" name="def_img" class="form-control form-control-alternative" (change)="handleUpload($event)">
+                  </div>
+                  
+                </div>
+                <div class="col-lg-4">
+                  <img src={{imageUrl}} style="width: 90px;" />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Time do jogador</label>
+                    <select name="team_id" class="form-control form-control-alternative" [(ngModel)]="jogador.team_id">
+                      <option [ngValue]="null" disabled>Selecione o time</option>
+                      <option *ngFor="let time of dataTimes" [ngValue]="time.id">{{time.t_name}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-username">Posição do jogador</label>
+                    <select name="position_id" class="form-control form-control-alternative" [(ngModel)]="jogador.position_id">
+                      <option [ngValue]="null" disabled>Selecione a posicao</option>
+                      <option *ngFor="let posicao of dataPosicao" [ngValue]="posicao.id">{{posicao.name}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="my-4" />
+            <div class="pl-lg-4">
+              <button class="btn btn-success" style="float: right;" (click)="registerJogador()">{{lblbtn}}</button>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,13 +1,10 @@
 <h1 mat-dialog-title>
-  <div style="position: absolute;padding-left: 6px;padding-top: 5px;">
-      ss
-  </div>
-  <span>Aviso</span> 
+  <span>{{data.type}}</span> 
 </h1>
 <div mat-dialog-content>
   <p style="color: #707070 !important; font-size: 14px;text-align: center">{{data.description}}</p>
 </div>
 <div mat-dialog-actions style="float: right;">
   <button mat-button color="primary" *ngIf="data.enableCancel == true" class="btn-cancelar"  (click)="onCancelClick()">Cancelar</button>
-  <button mat-button color="primary" style="margin-right: 20px;" class="btn-ok" (click)="onNoClick()">Ok</button>
+  <button mat-button color="primary" style="margin-right: 20px;" class="btn-ok btn btn-success" (click)="onNoClick()">Ok</button>
 </div>

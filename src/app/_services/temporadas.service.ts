@@ -1,5 +1,5 @@
 ﻿import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../_models';
@@ -22,13 +22,17 @@ export class TemporadaService {
 
     
     register(temporada: Temporada) {
-        
-        return this.http.post(`${config.apiEndpoint}/seasons/`, temporada, { headers: config.httpHeader });
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        return this.http.post<any>(`${config.proxy}`+'?t=p&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/seasons`,temporada, { headers: config.httpHeader } )
+        //return this.http.post(`${config.apiEndpoint}/seasons/`, temporada, { headers: header });
     }
 
     getAll() {
-        
-        return this.http.get(`${config.apiEndpoint}/seasons`, { headers: config.httpHeader });
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/seasons`, { headers: config.httpHeader } )
+        //return this.http.get(`${config.apiEndpoint}/seasons`, { headers: header });
     }
 
 

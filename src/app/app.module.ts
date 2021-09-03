@@ -22,7 +22,12 @@ import { NewCampeonatosComponent } from './pages/campeonatos/newcampeonatos.comp
 import { MatTableModule } from '@angular/material/table'; 
 import { TemporadasComponent } from './pages/temporadas/temporadas.component';
 import { NewTemporadasComponent } from './pages/temporadas/newtemporadas.component';
-
+import { TimesComponent } from './pages/times/times.component';
+import { NewTimesComponent } from './pages/times/newtimes.component';
+import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
+import {MultiSelectModule} from 'primeng/multiselect';
+import { JogadoresComponent } from './pages/jogadores/jogadores.component';
+import { NewJogadoresComponent } from './pages/jogadores/newjogadores.component';
 
 
 @NgModule({
@@ -36,6 +41,9 @@ import { NewTemporadasComponent } from './pages/temporadas/newtemporadas.compone
     AppRoutingModule,
     MatIconModule,
     MatTableModule,
+    MatDialogModule,
+    MultiSelectModule,
+    
   
   ],
   declarations: [
@@ -47,6 +55,10 @@ import { NewTemporadasComponent } from './pages/temporadas/newtemporadas.compone
     NewCampeonatosComponent,
     TemporadasComponent,
     NewTemporadasComponent,
+    TimesComponent,
+    NewTimesComponent,
+    JogadoresComponent,
+    NewJogadoresComponent,
   ],
   entryComponents: [DialogComponent],
   providers: [AuthenticationService, {provide: LocationStrategy, useClass: HashLocationStrategy},
