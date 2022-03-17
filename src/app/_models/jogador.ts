@@ -4,4 +4,6 @@
     team_id: string;
     position_id: string;
     def_img: string;
+    nick: string;
+    matricula: string;
 }

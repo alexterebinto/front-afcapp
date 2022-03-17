@@ -23,37 +23,74 @@ export class TimeService {
     
     register(time: Time) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
-        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=p&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams`,time, { headers: config.httpHeader } )
-        //return this.http.post(`${config.apiEndpoint}/teams/`, time, { headers: header });
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token);
+
+        if(config.production){
+            return this.http.post(`${config.apiEndpoint}/teams`, time, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=p&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams`,time, { headers: config.httpHeader } )
+        }
+        
     }
 
     update(time: Time, id) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=a&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams/`+id,time, { headers: config.httpHeader } )
-        //return this.http.post(`${config.apiEndpoint}/teams/`+id, time, { headers: header });
+        
+        if(config.production){
+            return this.http.put(`${config.apiEndpoint}/teams/`+id, time, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=a&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams/`+id,time, { headers: config.httpHeader } )
+        }
+        
     }
 
     getAll() {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams`, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/teams`, { headers: header });
+        
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/teams`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams`, { headers: config.httpHeader } )
+        }
+        
+        
+    }
+
+    getAllSeason(id) {
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/teamSeason/`+id, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teamSeason/`+id, { headers: config.httpHeader } )
+        }
+        
     }
 
     getId(id) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
-        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams/`+id, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/teams`+id, { headers: header });
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token);
+
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/teams/`+id, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/teams/`+id, { headers: config.httpHeader } )
+        }
+        
     }
 
     getAllPosition() {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/sports/1/positions`, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/sports/1/positions`, { headers: header });
+
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/sports/1/positions`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/sports/1/positions`, { headers: config.httpHeader } )
+        }
     }
 
 

@@ -24,16 +24,22 @@
             <h6 class="heading-small text-muted mb-4">Informações</h6>
             <div class="pl-lg-4">
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="first_name">Nome do Jogador</label>
+                    <label class="form-control-label" for="first_name">Nome do Jogador <span style="color: red;">*</span></label>
                     <input type="text" name="first_name" id="first_name" class="form-control form-control-alternative" [(ngModel)]="jogador.first_name">
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="last_name">Sobrenome</label>
+                    <label class="form-control-label" for="last_name">Sobrenome <span style="color: red;">*</span></label>
                     <input type="text" name="last_name" id="last_name" class="form-control form-control-alternative" [(ngModel)]="jogador.last_name">
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="nick">Apelido</label>
+                    <input type="text" name="nick" id="nick" class="form-control form-control-alternative" [(ngModel)]="jogador.nick">
                   </div>
                 </div>
               </div>
@@ -50,22 +56,28 @@
                 </div>
               </div>
               <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Time do jogador</label>
+                    <label class="form-control-label" for="input-username">Time do jogador <span style="color: red;">*</span></label>
                     <select name="team_id" class="form-control form-control-alternative" [(ngModel)]="jogador.team_id">
                       <option [ngValue]="null" disabled>Selecione o time</option>
                       <option *ngFor="let time of dataTimes" [ngValue]="time.id">{{time.t_name}}</option>
                     </select>
                   </div>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-4">
                   <div class="form-group">
-                    <label class="form-control-label" for="input-username">Posição do jogador</label>
+                    <label class="form-control-label" for="input-username">Posição do jogador <span style="color: red;">*</span></label>
                     <select name="position_id" class="form-control form-control-alternative" [(ngModel)]="jogador.position_id">
                       <option [ngValue]="null" disabled>Selecione a posicao</option>
                       <option *ngFor="let posicao of dataPosicao" [ngValue]="posicao.id">{{posicao.name}}</option>
                     </select>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="form-group">
+                    <label class="form-control-label" for="nick">Número Camisa</label>
+                    <input type="number" name="matricula" id="matricula" class="form-control form-control-alternative" [(ngModel)]="jogador.matricula">
                   </div>
                 </div>
               </div>

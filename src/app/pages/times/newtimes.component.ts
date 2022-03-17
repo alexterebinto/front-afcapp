@@ -63,6 +63,20 @@ openDialogSuccess(message){
   });
 }
 
+openDialogError(message){
+  const dialogRef = this.dialog.open(DialogComponent, {
+    width: '300px',
+    height:'200px',
+    panelClass: 'vermelhoPanel',
+    //disableClose: true,
+    data: {description: JSON.stringify(message), selectUnity: '', type: 'Sucesso'}
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    
+  });
+}
+
   registerTime(){
     
     this.loading = true;
@@ -71,10 +85,10 @@ openDialogSuccess(message){
       this.timeServices.update(this.time, this.idTime).pipe().subscribe(data =>{
         console.log(data)
         this.loading = false;
-        if(data["type"]=="success"){
+        if(data["success"]){
           this.openDialogSuccess(data["message"])
         }else{
-          
+          this.openDialogError(data["message"])
         }
       }, error => {
         console.log(error)
@@ -90,7 +104,7 @@ openDialogSuccess(message){
         if(data["type"]=="success"){
           this.openDialogSuccess(data["message"])
         }else{
-          
+          this.openDialogError(data["message"])
         }
       }, error => {
         console.log(error)

@@ -28,7 +28,16 @@ import {MatDialogModule, MatDialogRef} from '@angular/material/dialog';
 import {MultiSelectModule} from 'primeng/multiselect';
 import { JogadoresComponent } from './pages/jogadores/jogadores.component';
 import { NewJogadoresComponent } from './pages/jogadores/newjogadores.component';
-
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { DialogTemporadasComponent } from './components/dialogtemporadas/dialogtemporadas.component';
+import { NewJogosComponent } from './pages/jogos/newjogos.component';
+import { JogosComponent } from './pages/jogos/jogos.component';
+import { DialogMatchComponent } from './components/dialogmatch/dialogmatch.component';
+import { RodadaComponent } from './pages/rodada/rodada.component';
+import {CalendarModule} from 'primeng/calendar';
+import { DialogEventComponent } from './components/dialogevent/dialogevent.component';
+import {DropdownModule} from 'primeng/dropdown';
+import {SelectButtonModule} from 'primeng/selectbutton';
 
 @NgModule({
   imports: [
@@ -43,6 +52,10 @@ import { NewJogadoresComponent } from './pages/jogadores/newjogadores.component'
     MatTableModule,
     MatDialogModule,
     MultiSelectModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    CalendarModule,
+    DropdownModule,
+    SelectButtonModule,
     
   
   ],
@@ -59,8 +72,14 @@ import { NewJogadoresComponent } from './pages/jogadores/newjogadores.component'
     NewTimesComponent,
     JogadoresComponent,
     NewJogadoresComponent,
+    DialogTemporadasComponent,
+    NewJogosComponent,
+    JogosComponent,
+    DialogMatchComponent,
+    RodadaComponent,
+    DialogEventComponent,
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [DialogComponent, DialogTemporadasComponent, DialogMatchComponent, DialogEventComponent],
   providers: [AuthenticationService, {provide: LocationStrategy, useClass: HashLocationStrategy},
   {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]

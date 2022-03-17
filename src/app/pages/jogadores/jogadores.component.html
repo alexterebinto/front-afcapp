@@ -22,8 +22,34 @@
   <div class="row" style="min-height: 400px;">
     <div class="col">
       <div class="card shadow">
-        <div class="card-header border-0">
-          <h3 class="mb-0">Jogadores</h3>
+        <div class="card-header border-0" style="background: #f6f9fc;">
+          <div class="row">
+            <div class="col-lg-2">
+              <h3 class="mb-0"></h3>
+            </div>
+            <div class="col-lg-8" style="text-align: center;">
+              <div class="form-group">
+                <label class="form-control-label" for="nick">Pesquisar jogador</label>
+                <input type="text" (keyup.enter)="searchJogador()" placeholder="Digite o nome do jogador" name="matjogadorricula" id="jogador" class="form-control form-control-alternative" [(ngModel)]="jogadorSearch">
+              </div>
+              <button class="btn btn-sm btn-icon btn-default" (click)="searchCancel()" style="width: 130px;background: #f6f9fc;border: 1px solid #666;color: #666;">
+                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                <span class="btn-inner--text">Limpar</span>
+              </button>
+              <button class="btn btn-sm btn-icon btn-primary" (click)="searchJogador()" style="width: 130px;background: #7283dd;border: 1px solid #7283dd;color: #fff;">
+                <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                <span class="btn-inner--text">Buscar</span>
+              </button>
+            </div>
+            <div class="col-lg-8" style="text-align: center;"></div>
+          
+            <!--<div class="col-lg-6" style="float: right;text-align: right;">
+              <h5>Filtrar</h5>
+              <p-selectButton [options]="stateOptions" [(ngModel)]="value1" optionLabel="label" optionValue="value"></p-selectButton>
+            </div>-->
+          </div>
+        
+        
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
@@ -32,21 +58,26 @@
                 <th scope="col" style="width: 50px;"></th>
                 <th scope="col">Nome</th>
                 <th scope="col">Time</th>
-                <th scope="col">Editar</th>
+                <th scope="col" style="width: 200px;">Acessar</th>
                
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let time of dataSource">
                 <td>
-                  <img style="width: 50px;" src="https://ccfutebolsociety.com/storage/players/{{time.def_img}}">
+                  <div style="width: 50px;height: 50px;overflow: hidden;border-radius: 25px;"><img style="width: 70px;margin-left: -10px;" src="https://ccfutebolsociety.com/storage/players/{{time.def_img}}"></div>
                  </td>
                 <td>
-                 {{time.first_name}}
+                 {{time.first_name}} {{time.last_name}}
                 </td>
-                <td></td>
                 <td>
-                  <a [routerLink]="['/newjogadores', time.id]" class="btn btn-sm btn-primary">Editar</a>
+                  {{time.team.t_name}}
+                </td>
+                <td>
+                  <a [routerLink]="['/newjogadores', time.id]" class="btn btn-icon btn-sm btn-primary">
+                    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                    <span class="btn-inner--text">Acessar jogador</span>
+                  </a>
                 </td>
 
                
@@ -56,26 +87,26 @@
         </div>
         <div class="card-footer py-4">
           <nav aria-label="...">
-            <ul class="pagination justify-content-end mb-0">
-              <li class="page-item disabled">
-                <a class="page-link" href="javascript:void(0)" tabindex="-1">
-                  <i class="fas fa-angle-left"></i>
-                  <span class="sr-only">Previous</span>
-                </a>
-              </li>
-              <li class="page-item active">
-                <a class="page-link" href="javascript:void(0)">1</a>
-              </li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">2 <span class="sr-only">(current)</span></a>
-              </li>
-              <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="javascript:void(0)">
-                  <i class="fas fa-angle-right"></i>
-                  <span class="sr-only">Next</span>
-                </a>
-              </li>
+            <ul class="pagination justify-content-end mb-0" >
+              <div *ngFor="let page of pagination">
+                <li *ngIf="page.label=='pagination.previous'" [ngClass]="{'disabled':!page.url}" class="page-item">
+                  <a class="page-link" (click)="getAll(page.label, page.url)" tabindex="-1">
+                    <i class="fas fa-angle-left"></i>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+                <li *ngIf="parseValue(page.label) || page.label=='...'" [ngClass]="{'active':page.active===true}" class="page-item" >
+                  <a class="page-link" (click)="getAll(page.label, page.url)">{{page.label}}</a>
+                </li>
+                <li class="page-item" *ngIf="page.label=='pagination.next'">
+                  <a class="page-link" (click)="getAll(page.label, page.url)">
+                    <i class="fas fa-angle-right"></i>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+            </div>
+              
+             
             </ul>
           </nav>
         </div>

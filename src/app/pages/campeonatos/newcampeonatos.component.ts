@@ -55,6 +55,20 @@ export class NewCampeonatosComponent implements OnInit {
     });
   }
 
+  openDialogError(message){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      height:'200px',
+      panelClass: 'vermelhoPanel',
+      //disableClose: true,
+      data: {description: JSON.stringify(message), selectUnity: '', type: 'Sucesso'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
 
   getAllSports() {
     this.loading = true;
@@ -86,7 +100,7 @@ export class NewCampeonatosComponent implements OnInit {
         if(data["success"]){
             this.openDialogSuccess(data["message"])
         }else{
-          
+          this.openDialogError(data["message"])
         }
   
       }, error => {
@@ -104,7 +118,7 @@ export class NewCampeonatosComponent implements OnInit {
         if(data["type"]=="success"){
             this.openDialogSuccess(data["message"])
         }else{
-          
+          this.openDialogError(data["message"])
         }
   
       }, error => {

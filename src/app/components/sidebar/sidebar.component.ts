@@ -24,7 +24,26 @@ export const ROUTES: RouteInfo[] = [
   { path: '/temporadas', title: 'Temporadas',  icon:'ni-calendar-grid-58 text-pink', class: '' },
   { path: '/times', title: 'Times',  icon:'ni-user-run text-blue', class: '' },
   { path: '/jogadores', title: 'Jogadores',  icon:'ni-single-02 text-yellow', class: '' },
-  { path: '/rodadas', title: 'Jogos e Rodadas',  icon:'ni-chart-pie-35 text-primary', class: '' }
+  { path: '/jogos', title: 'Jogos e Rodadas',  icon:'ni-chart-pie-35 text-primary', class: '' }
+  
+  
+  
+];
+
+
+export const ROUTESLIST: RouteInfo[] = [
+  { path: '/dashboard', title: 'Dashboard',  icon: 'ni-tv-2 text-primary', class: '' },
+  { path: '/campeonatos', title: 'Campeonatos',  icon:'ni-bullet-list-67 text-red', class: '' },
+  { path: '/temporadas', title: 'Temporadas',  icon:'ni-calendar-grid-58 text-pink', class: '' },
+  { path: '/times', title: 'Times',  icon:'ni-user-run text-blue', class: '' },
+  { path: '/jogadores', title: 'Jogadores',  icon:'ni-single-02 text-yellow', class: '' },
+  { path: '/jogos', title: 'Jogos e Rodadas',  icon:'ni-chart-pie-35 text-primary', class: '' },
+  { path: '/newcampeonatos',    title: 'Criar Editar Campeonatos' ,  icon:'ni-chart-pie-35 text-primary', class: ''},
+  { path: '/newtemporadas',    title: 'Criar Editar Temporadas',  icon:'ni-chart-pie-35 text-primary', class: '' },
+  { path: '/newtimes',    title: 'Criar Editar Times' ,  icon:'ni-chart-pie-35 text-primary', class: ''},
+  { path: '/newjogadores',    title: 'Criar Editar Jogadores' ,  icon:'ni-chart-pie-35 text-primary', class: ''},
+  { path: '/rodada',    title: 'Jogos e Rodadas',  icon:'ni-chart-pie-35 text-primary', class: '' },
+
   
   
   

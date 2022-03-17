@@ -13,4 +13,5 @@
     s_draw_away: string;
     s_lost_away: string;
     s_win_away: string;
+    teamsSeason: any;
 }

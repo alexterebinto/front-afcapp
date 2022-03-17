@@ -24,36 +24,68 @@ export class CampeonatoService {
     register(campeonato: Campeonato) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=p&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`,campeonato, { headers: config.httpHeader } )
-        //return this.http.post(`${config.apiEndpoint}/tournaments/`, campeonato, { headers: header });
+        if(config.production){
+            return this.http.post(`${config.apiEndpoint}/tournaments`, campeonato, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=p&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`,campeonato, { headers: config.httpHeader } )
+        }
+        
     }
 
     update(campeonato: Campeonato, id) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=a&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`+id,campeonato, { headers: config.httpHeader } )
-        //return this.http.post(`${config.apiEndpoint}/tournaments/`+id, campeonato, { headers: header });
+        if(config.production){
+            return this.http.put(`${config.apiEndpoint}/tournaments/`+id, campeonato, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=a&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`+id,campeonato, { headers: config.httpHeader } )
+        }
+        
     }
 
     getAll() {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/tournaments`, { headers: header });
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/tournaments`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments`, { headers: config.httpHeader } )
+        }
+        
+    }
+
+    getClassificacao() {
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/dashboard/1`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/dashboard/1`, { headers: config.httpHeader } )
+        }
+        
     }
 
     getId(id) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments/`+id, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/tournaments`, { headers: header });
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/tournaments/`+id, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/tournaments/`+id, { headers: config.httpHeader } )
+        }
+        
     }
 
     getAllSports() {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
-        return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/sports`, { headers: config.httpHeader } )
-        //return this.http.get(`${config.apiEndpoint}/tournaments`, { headers: header });
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/sports`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/sports`, { headers: config.httpHeader } )
+        }
+
+        
     }
 
 

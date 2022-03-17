@@ -40,7 +40,7 @@ export class TemporadasComponent implements OnInit {
     this.loading = true;
 
     this.temporadaServices.getAll().pipe().subscribe(data =>{
-     
+      console.log(data)
       this.loading = false;
 
       if(data["message"] == "Expired token"){

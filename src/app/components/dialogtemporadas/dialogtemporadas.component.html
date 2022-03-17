@@ -1,0 +1,29 @@
+
+<h1 mat-dialog-title>
+  <span>{{data.type}}</span> 
+</h1>
+<div mat-dialog-content>
+  <div class="bgLoader" *ngIf="loading == true"><div class="bgWhite"><div class="bgSpinner"></div></div></div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="form-group">
+        <label class="form-control-label" for="input-username">Temporada</label>
+        <select name="temporada" class="form-control form-control-alternative" [(ngModel)]="temporada">
+          <option [ngValue]="null" disabled>Selecione a temporada</option>
+          <option *ngFor="let temporada of dataSource" [ngValue]="temporada">{{temporada.s_name}}</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions style="float: right;">
+  <button mat-button color="primary" *ngIf="data.enableCancel == true" class="btn-cancelar btn-icon btn btn-danger" (click)="onCancelClick()">
+    <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+    <span class="btn-inner--text">Cancelar</span>
+  </button>
+  <button mat-button color="primary" style="margin-right: 20px;" class="btn-ok btn btn-icon btn-primary" (click)="onNoClick()">
+    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+    <span class="btn-inner--text">Selecionar</span>
+  </button>
+</div>

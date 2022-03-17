@@ -18,32 +18,84 @@ export class JogadoresComponent implements OnInit {
   
   loading = false;
   dataSource;
+  page;
+  pagination;
+  value1 = 'off';
+  stateOptions;
+  jogadorSearch;
   ngOnInit() {
-    this.getAll();
+    this.stateOptions = [{label: 'Todos', value: 'off'}, {label: 'Por Time', value: 'on'}];
+    this.page = 1;
+    this.getAll(this.page, "page1");
   }
 
-  getAll() {
+  parseValue(valor){
+    var parsed = parseFloat(valor);
+    var casted = +valor;
+    return parsed === casted  && !isNaN(parsed) && !isNaN(casted);
+  }
+
+  searchCancel(){
+    this.jogadorSearch = "";
+    this.page = 1;
+    this.getAll(this.page, "page1");
+  }
+
+  searchJogador(){
     this.loading = true;
-
-    this.jogadoresService.getAll().pipe().subscribe(data =>{
-      console.log(data)
+    this.jogadoresService.getAllPlayeresSearch(this.jogadorSearch).pipe().subscribe(data =>{
+      console.log(data['data'])
+      this.dataSource = data['data'];
+      this.pagination = [];
+      this.page = 1;
       this.loading = false;
-      if(data["message"] == "Expired token"){
-        this.openDialogSuccess();
-      }else{
-        this.dataSource = data['data'];
-      }
-
-     
-      
     }, error => {
       console.log(error)
       this.loading = false;
-   
-     
+  
+    
       
     })
+  }
+  
 
+  getAll(page, url) {
+
+    if(page != "..."){
+      if((page == "pagination.previous") && (url != null)){
+        this.page = this.page -1
+      }else if((page == "pagination.next") && (url != null)){
+        this.page = Number(this.page) + Number(1)
+      }else{
+        this.page = page;
+      }
+      
+      this.loading = true;
+
+      this.jogadoresService.getAll(this.page).pipe().subscribe(data =>{
+        console.log(data)
+        this.loading = false;
+        if(data["message"] == "Expired token"){
+          this.openDialogSuccess();
+        }else{
+          this.dataSource = data['data'];
+
+          this.pagination = data.links ;
+
+        
+
+        }
+
+      
+        
+      }, error => {
+        console.log(error)
+        this.loading = false;
+    
+      
+        
+      })
+    }
 
   }
 

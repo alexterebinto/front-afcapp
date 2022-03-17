@@ -31,7 +31,7 @@
               <tr>
                 
                 <th scope="col">Nome</th>
-                <th scope="col">Editar</th>
+                <th scope="col" style="width: 200px;">Acessar</th>
                
               </tr>
             </thead>
@@ -42,7 +42,10 @@
                  {{campeonato.name}}
                 </td>
                 <td>
-                  <a [routerLink]="['/newcampeonatos', campeonato.id]" class="btn btn-sm btn-primary">Editar</a>
+                  <a [routerLink]="['/newcampeonatos', campeonato.id]" class="btn btn-icon btn-sm btn-primary">
+                    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                    <span class="btn-inner--text">Acessar campeonato</span>
+                  </a>
                 </td>
                
               </tr>

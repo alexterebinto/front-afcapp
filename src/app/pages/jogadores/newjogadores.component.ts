@@ -71,6 +71,20 @@ export class NewJogadoresComponent implements OnInit {
     });
   }
 
+  openDialogError(message){
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '300px',
+      height:'200px',
+      panelClass: 'vermelhoPanel',
+      //disableClose: true,
+      data: {description: JSON.stringify(message), selectUnity: '', type: 'Ops'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
+  }
+
   getAllPosition(){
     this.loading = true;
 
@@ -105,42 +119,53 @@ export class NewJogadoresComponent implements OnInit {
 
   registerJogador(){
     
-    this.loading = true;
 
-    console.log(this.jogador)
+    if((this.jogador.position_id) && (this.jogador.team_id)){
 
-    if(this.isEdit){
-      this.jogadoresService.update(this.jogador, this.idJogador).pipe().subscribe(data =>{
-        console.log(data)
-        this.loading = false;
-        if(data["success"]){
-          this.openDialogSuccess(data["message"])
-        }else{
-          
-        }
-      }, error => {
-        console.log(error)
-        this.loading = false;
-    
+      this.loading = true;
+
+      console.log(this.jogador)
+
+      if(this.isEdit){
+        this.jogadoresService.update(this.jogador, this.idJogador).pipe().subscribe(data =>{
+          console.log(data)
+          this.loading = false;
+          if(data["success"]){
+            this.openDialogSuccess(data["message"])
+          }else if(data["type"] == "fail"){
+            this.openDialogError("Campos nome, sobrenome e posição do jogador são obrigatórios")
+          }else{
+            this.openDialogError(data["message"])
+          }
+        }, error => {
+          console.log(error)
+          this.loading = false;
       
         
-      })
+          
+        })
+      }else{
+        this.jogadoresService.register(this.jogador).pipe().subscribe(data =>{
+          console.log(data)
+          this.loading = false;
+          if(data["type"]=="success"){
+            this.openDialogSuccess(data["message"])
+          }else if(data["type"] == "fail"){
+            this.openDialogError("Campos nome, sobrenome e posição do jogador são obrigatórios")
+          }else{
+            this.openDialogError(data["message"])
+          }
+        }, error => {
+          console.log(error)
+          this.loading = false;
+      
+        
+          
+        })
+      }
+
     }else{
-      this.jogadoresService.register(this.jogador).pipe().subscribe(data =>{
-        console.log(data)
-        this.loading = false;
-        if(data["type"]=="success"){
-          this.openDialogSuccess(data["message"])
-        }else{
-          
-        }
-      }, error => {
-        console.log(error)
-        this.loading = false;
-    
-      
-        
-      })
+      this.openDialogError("Campo posição do jogador e time são obrigatórios")
     }
 
 

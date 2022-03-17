@@ -13,6 +13,9 @@ import { TimesComponent } from 'src/app/pages/times/times.component';
 import { NewTimesComponent } from 'src/app/pages/times/newtimes.component';
 import { NewJogadoresComponent } from 'src/app/pages/jogadores/newjogadores.component';
 import { JogadoresComponent } from 'src/app/pages/jogadores/jogadores.component';
+import { NewJogosComponent } from 'src/app/pages/jogos/newjogos.component';
+import { JogosComponent } from 'src/app/pages/jogos/jogos.component';
+import { RodadaComponent } from 'src/app/pages/rodada/rodada.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -32,6 +35,9 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'jogadores',    component: JogadoresComponent },
     { path: 'newjogadores/:id',    component: NewJogadoresComponent },
     { path: 'newjogadores',    component: NewJogadoresComponent },
+    { path: 'jogos/:id',    component: JogosComponent },
+    { path: 'jogos',    component: JogosComponent },
+    { path: 'rodada/:id/:ids/:sname',    component: RodadaComponent },
 
    
 ];

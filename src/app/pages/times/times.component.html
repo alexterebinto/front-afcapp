@@ -31,7 +31,7 @@
               <tr>
                 <th scope="col" style="width: 50px;"></th>
                 <th scope="col">Nome</th>
-                <th scope="col">Editar</th>
+                <th scope="col" style="width: 200px;">Acessar</th>
                
               </tr>
             </thead>
@@ -44,9 +44,11 @@
                  {{time.t_name}}
                 </td>
                 <td>
-                  <a [routerLink]="['/newtimes', time.id]" class="btn btn-sm btn-primary">Editar</a>
+                  <a [routerLink]="['/newtimes', time.id]" class="btn btn-icon btn-sm btn-primary">
+                    <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                    <span class="btn-inner--text">Acessar time</span>
+                  </a>
                 </td>
-               
               </tr>
             </tbody>
           </table>

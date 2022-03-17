@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { ROUTES } from '../sidebar/sidebar.component';
+import { ROUTES, ROUTESLIST } from '../sidebar/sidebar.component';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/_services';
@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.listTitles = ROUTES.filter(listTitle => listTitle);
+    this.listTitles = ROUTESLIST.filter(listTitle => listTitle);
   }
 
   logout(){
@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
             return this.listTitles[item].title;
         }
     }
-    return 'Dashboard';
+    return 'Criar Editar Informações';
   }
 
 }
