@@ -20,36 +20,99 @@
 <div class="container-fluid mt--7">
 <!-- Table -->
   <div class="row" style="min-height: 400px;">
+
+    
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0" style="background: #f6f9fc;">
+
           <div class="row">
-            <div class="col-lg-2">
-              <h3 class="mb-0"></h3>
-            </div>
-            <div class="col-lg-8" style="text-align: center;">
-              <div class="form-group">
-                <label class="form-control-label" for="nick">Pesquisar jogador</label>
-                <input type="text" (keyup.enter)="searchJogador()" placeholder="Digite o nome do jogador" name="matjogadorricula" id="jogador" class="form-control form-control-alternative" [(ngModel)]="jogadorSearch">
-              </div>
-              <button class="btn btn-sm btn-icon btn-default" (click)="searchCancel()" style="width: 130px;background: #f6f9fc;border: 1px solid #666;color: #666;">
-                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                <span class="btn-inner--text">Limpar</span>
-              </button>
-              <button class="btn btn-sm btn-icon btn-primary" (click)="searchJogador()" style="width: 130px;background: #7283dd;border: 1px solid #7283dd;color: #fff;">
-                <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
-                <span class="btn-inner--text">Buscar</span>
-              </button>
-            </div>
-            <div class="col-lg-8" style="text-align: center;"></div>
-          
-            <!--<div class="col-lg-6" style="float: right;text-align: right;">
-              <h5>Filtrar</h5>
-              <p-selectButton [options]="stateOptions" [(ngModel)]="value1" optionLabel="label" optionValue="value"></p-selectButton>
-            </div>-->
+            <div class="col-lg-12">
+            <p-tabView>
+              <p-tabPanel header="Pesquisar Jogador">
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-lg-2">
+                    <h3 class="mb-0"></h3>
+                  </div>
+                  <div class="col-lg-8" style="text-align: center;">
+                    <div class="form-group">
+                      <label class="form-control-label" for="nick">Pesquisar jogador</label>
+                      <input type="text" (keyup.enter)="searchJogador()" placeholder="Digite o nome do jogador" name="matjogadorricula" id="jogador" class="form-control form-control-alternative" [(ngModel)]="jogadorSearch">
+                    </div>
+                    <button class="btn btn-sm btn-icon btn-default" (click)="searchCancel()" style="width: 130px;background: #f6f9fc;border: 1px solid #666;color: #666;">
+                      <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
+                      <span class="btn-inner--text">Limpar</span>
+                    </button>
+                    <button class="btn btn-sm btn-icon btn-primary" (click)="searchJogador()" style="width: 130px;background: #7283dd;border: 1px solid #7283dd;color: #fff;">
+                      <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                      <span class="btn-inner--text">Buscar</span>
+                    </button>
+                  </div>
+                  <div class="col-lg-8" style="text-align: center;"></div>
+                
+                  <!--<div class="col-lg-6" style="float: right;text-align: right;">
+                    <h5>Filtrar</h5>
+                    <p-selectButton [options]="stateOptions" [(ngModel)]="value1" optionLabel="label" optionValue="value"></p-selectButton>
+                  </div>-->
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="Pesquisar por time">
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-lg-2">
+                    <h3 class="mb-0"></h3>
+                  </div>
+                  <div class="col-lg-8" style="text-align: center;">
+                    <div class="form-group">
+                      <label class="form-control-label" for="nick">Selecione o time</label>
+                      <select name="team_id" class="form-control form-control-alternative" [(ngModel)]="team_id">
+                        <option [ngValue]="null" disabled>Selecione o time</option>
+                        <option *ngFor="let time of dataTimes" [ngValue]="time.id">{{time.t_name}}</option>
+                      </select>
+                    </div>
+                    <button class="btn btn-sm btn-icon btn-primary" (click)="searchJogador()" style="width: 130px;background: #7283dd;border: 1px solid #7283dd;color: #fff;">
+                      <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                      <span class="btn-inner--text">Buscar</span>
+                    </button>
+                  </div>
+                
+                </div>
+              </p-tabPanel>
+              <p-tabPanel header="Pesquisa avançada">
+                <div class="row" style="margin-top: 20px;">
+                  <div class="col-lg-2">
+                    <h3 class="mb-0"></h3>
+                  </div>
+                  <div class="col-lg-4" style="text-align: center;">
+                    <div class="form-group">
+                      <label class="form-control-label" for="nick">Pesquisar jogador</label>
+                      <input type="text" (keyup.enter)="searchJogador()" placeholder="Digite o nome do jogador" name="matjogadorricula" id="jogador" class="form-control form-control-alternative" [(ngModel)]="jogadorSearch">
+                    </div>
+                  </div>
+                  <div class="col-lg-4" style="text-align: center;">
+                    <div class="form-group">
+                      <label class="form-control-label" for="nick">Selecione o time</label>
+                      <select name="team_id" class="form-control form-control-alternative" [(ngModel)]="team_id">
+                        <option [ngValue]="null" disabled>Selecione o time</option>
+                        <option *ngFor="let time of dataTimes" [ngValue]="time.id">{{time.t_name}}</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-2">
+                    <h3 class="mb-0"></h3>
+                  </div>
+                  <div class="col-lg-8" style="text-align: center;">
+                    <button class="btn btn-sm btn-icon btn-primary" (click)="searchJogador()" style="width: 130px;background: #7283dd;border: 1px solid #7283dd;color: #fff;">
+                      <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                      <span class="btn-inner--text">Buscar</span>
+                    </button>
+                  </div>
+                </div>
+              </p-tabPanel>
+          </p-tabView>
           </div>
-        
-        
+        </div>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">

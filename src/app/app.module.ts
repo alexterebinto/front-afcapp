@@ -38,6 +38,7 @@ import {CalendarModule} from 'primeng/calendar';
 import { DialogEventComponent } from './components/dialogevent/dialogevent.component';
 import {DropdownModule} from 'primeng/dropdown';
 import {SelectButtonModule} from 'primeng/selectbutton';
+import {TabViewModule} from 'primeng/tabview';
 
 @NgModule({
   imports: [
@@ -52,6 +53,7 @@ import {SelectButtonModule} from 'primeng/selectbutton';
     MatTableModule,
     MatDialogModule,
     MultiSelectModule,
+    TabViewModule,
     NgMultiSelectDropDownModule.forRoot(),
     CalendarModule,
     DropdownModule,

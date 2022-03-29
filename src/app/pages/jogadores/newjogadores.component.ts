@@ -30,7 +30,7 @@ export class NewJogadoresComponent implements OnInit {
 
   ngOnInit() {
     this.getAllPosition();
-
+    this.imageUrl = "/assets/img/brand/noimage.png";
     this.route.params.subscribe(params => {
       let id = params['id'];
      

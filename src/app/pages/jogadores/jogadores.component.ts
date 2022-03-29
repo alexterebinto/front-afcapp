@@ -14,7 +14,7 @@ import { TimeService } from 'src/app/_services/time.service';
   styleUrls: ['./jogadores.component.scss']
 })
 export class JogadoresComponent implements OnInit {
-  constructor(private authenticationService: AuthenticationService, public dialog: MatDialog, private jogadoresService: JogadoresService, private modalService: NgbModal, private router: Router) {}
+  constructor(private timeServices: TimeService, private authenticationService: AuthenticationService, public dialog: MatDialog, private jogadoresService: JogadoresService, private modalService: NgbModal, private router: Router) {}
   
   loading = false;
   dataSource;
@@ -23,10 +23,14 @@ export class JogadoresComponent implements OnInit {
   value1 = 'off';
   stateOptions;
   jogadorSearch;
+  team_id;
+  dataTimes;
+
   ngOnInit() {
     this.stateOptions = [{label: 'Todos', value: 'off'}, {label: 'Por Time', value: 'on'}];
     this.page = 1;
-    this.getAll(this.page, "page1");
+    //this.getAll(this.page, "page1");
+    this.getAllTimes();
   }
 
   parseValue(valor){
@@ -58,7 +62,21 @@ export class JogadoresComponent implements OnInit {
     })
   }
   
+  getAllTimes(){
+    this.loading = true;
 
+      this.timeServices.getAll().pipe().subscribe(data =>{
+      this.dataTimes = data['data'];
+        this.loading = false;
+        
+      }, error => {
+        console.log(error)
+        this.loading = false;
+    
+      
+        
+      })
+  }
   getAll(page, url) {
 
     if(page != "..."){
@@ -73,7 +91,6 @@ export class JogadoresComponent implements OnInit {
       this.loading = true;
 
       this.jogadoresService.getAll(this.page).pipe().subscribe(data =>{
-        console.log(data)
         this.loading = false;
         if(data["message"] == "Expired token"){
           this.openDialogSuccess();

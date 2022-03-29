@@ -614,3 +614,77 @@ p-calendar .p-datepicker {
   overflow: hidden;
   position: relative;
 }
+
+.p-component, .p-component * {
+  box-sizing: border-box;
+}
+
+.p-component {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.p-tabview-nav-container {
+  position: relative;
+}
+
+.p-tabview-nav-content {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  overscroll-behavior: contain auto;
+}
+
+.p-tabview .p-tabview-nav {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-width: 0 0 2px 0;
+}
+
+
+.p-tabview-nav {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  flex: 1 1 auto;
+}
+
+.p-tabview .p-tabview-nav li {
+  margin-right: 0;
+}
+
+.p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+  background: #ffffff;
+  border-color: #9aad6c;
+  color: #9aad6c;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.p-tabview .p-tabview-nav li .p-tabview-nav-link {
+  border: solid #dee2e6;
+  border-width: 0 0 2px 0;
+  border-color: transparent transparent #dee2e6 transparent;
+  background: #ffffff;
+  color: #b2b2b2;
+  padding: 1.25rem;
+  font-weight: 700;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+  transition: box-shadow 0.2s;
+  margin: 0 0 -2px 0;
+}
+
+.p-tabview-nav-link {
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+  text-decoration: none;
+  overflow: hidden;
+}

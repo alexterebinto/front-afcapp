@@ -6,4 +6,5 @@
     def_img: string;
     nick: string;
     matricula: string;
+    dataNascimento: string;
 }
