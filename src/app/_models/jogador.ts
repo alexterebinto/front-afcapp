@@ -7,4 +7,5 @@
     nick: string;
     matricula: string;
     dataNascimento: string;
+    numeroCamisa: string;
 }

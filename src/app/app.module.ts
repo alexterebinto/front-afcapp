@@ -39,6 +39,8 @@ import { DialogEventComponent } from './components/dialogevent/dialogevent.compo
 import {DropdownModule} from 'primeng/dropdown';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {TabViewModule} from 'primeng/tabview';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
+
 
 @NgModule({
   imports: [
@@ -58,6 +60,7 @@ import {TabViewModule} from 'primeng/tabview';
     CalendarModule,
     DropdownModule,
     SelectButtonModule,
+    NgxMaskModule.forRoot(),
     
   
   ],

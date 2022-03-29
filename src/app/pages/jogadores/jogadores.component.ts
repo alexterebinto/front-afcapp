@@ -25,11 +25,13 @@ export class JogadoresComponent implements OnInit {
   jogadorSearch;
   team_id;
   dataTimes;
-
+  teamId;
+  jogadorSearchs;
+  team_ids;
   ngOnInit() {
     this.stateOptions = [{label: 'Todos', value: 'off'}, {label: 'Por Time', value: 'on'}];
     this.page = 1;
-    //this.getAll(this.page, "page1");
+    this.getAll(this.page, "page1");
     this.getAllTimes();
   }
 
@@ -41,13 +43,49 @@ export class JogadoresComponent implements OnInit {
 
   searchCancel(){
     this.jogadorSearch = "";
+    this.jogadorSearchs = "";
     this.page = 1;
-    this.getAll(this.page, "page1");
+    this.dataSource = [];
+    //this.getAll(this.page, "page1");
   }
 
   searchJogador(){
     this.loading = true;
     this.jogadoresService.getAllPlayeresSearch(this.jogadorSearch).pipe().subscribe(data =>{
+      console.log(data['data'])
+      this.dataSource = data['data'];
+      this.pagination = [];
+      this.page = 1;
+      this.loading = false;
+    }, error => {
+      console.log(error)
+      this.loading = false;
+  
+    
+      
+    })
+  }
+
+  searchJogadorByTeam(){
+    this.loading = true;
+    this.jogadoresService.getAllPlayeresSearchByTeam(this.teamId).pipe().subscribe(data =>{
+      console.log(data['data'])
+      this.dataSource = data['data'];
+      this.pagination = [];
+      this.page = 1;
+      this.loading = false;
+    }, error => {
+      console.log(error)
+      this.loading = false;
+  
+    
+      
+    })
+  }
+
+  searchJogadorAndTeam(){
+    this.loading = true;
+    this.jogadoresService.getAllPlayeresSearchAndTeam(this.jogadorSearchs, this.team_ids).pipe().subscribe(data =>{
       console.log(data['data'])
       this.dataSource = data['data'];
       this.pagination = [];

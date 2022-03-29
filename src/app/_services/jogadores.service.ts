@@ -84,6 +84,37 @@ export class JogadoresService {
         
     }
 
+    getAllPlayeresSearchByTeam(searchParam) {
+        let datas = {
+            "search": searchParam
+        }
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/players/search?team_id=`+searchParam, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/players/search?team_id=`+searchParam, datas, { headers: config.httpHeader } )
+        }
+        
+    }
+
+    getAllPlayeresSearchAndTeam(searchParam, team) {
+        let datas = {
+            "search": searchParam
+        }
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/players/search?search=`+searchParam+'&team_id='+team, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/players/search?search=`+searchParam+'&team_id='+team, datas, { headers: config.httpHeader } )
+        }
+        
+    }
+
+
     getId(id) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
