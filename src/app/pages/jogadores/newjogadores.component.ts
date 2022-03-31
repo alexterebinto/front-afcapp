@@ -183,7 +183,7 @@ export class NewJogadoresComponent implements OnInit {
       //console.log( this.jogador)
       var date = this.jogador.dataNascimento.split("-");
       this.jogador.dataNascimento = date[2]+"-"+date[1]+"-"+date[0];
-      this.imageUrl = "https://images.sportmanager.com.br/cab/players/"+this.jogador.def_img
+      this.imageUrl = "https://images.sportmanager.com.br/curitibano/players/"+this.jogador.def_img
       this.loading = false;
     }, error => {
       console.log(error)
