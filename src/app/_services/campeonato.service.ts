@@ -54,13 +54,13 @@ export class CampeonatoService {
         
     }
 
-    getClassificacao() {
+    getClassificacao(campeonato) {
         var usuario = JSON.parse(localStorage.getItem('currentUser'));
         var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
         if(config.production){
-            return this.http.get(`${config.apiEndpoint}/dashboard/1`, { headers: header });
+            return this.http.get(`${config.apiEndpoint}/dashboard/`+campeonato, { headers: header });
         }else{
-            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/dashboard/1`, { headers: config.httpHeader } )
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/dashboard/`+campeonato, { headers: config.httpHeader } )
         }
         
     }

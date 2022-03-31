@@ -6,6 +6,7 @@ import Chart from 'chart.js';
 import { DialogComponent } from 'src/app/components/dialog/dialog.component';
 import { AuthenticationService } from 'src/app/_services';
 import { CampeonatoService } from 'src/app/_services/campeonato.service';
+import { TemporadaService } from 'src/app/_services/temporadas.service';
 
 // core components
 import {
@@ -21,7 +22,7 @@ import {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  constructor(private authenticationService: AuthenticationService, public dialog: MatDialog, private campeonatoServices: CampeonatoService, private modalService: NgbModal, private router: Router) {}
+  constructor(private authenticationService: AuthenticationService, public dialog: MatDialog, private campeonatoServices: CampeonatoService, private temporadaServices: TemporadaService, private modalService: NgbModal, private router: Router) {}
 
   public datasets: any;
   public data: any;
@@ -30,9 +31,61 @@ export class DashboardComponent implements OnInit {
   public clicked1: boolean = false;
   loading = false;
   dataSource = [];
+  dataCampeonato;
+  campeonatos;
   ngOnInit() {
-    this.getClassificacao();
-    
+   // this.getClassificacao();
+    this.getAllTemporada()
+  }
+
+
+  getAllTemporada() {
+    this.loading = true;
+
+    this.temporadaServices.getAll().pipe().subscribe(data =>{
+      console.log(data)
+      this.loading = false;
+
+      if(data["message"] == "Expired token"){
+        this.openDialogSuccess();
+      }else{
+        this.dataCampeonato = data['data'];
+      }
+    }, error => {
+      console.log(error)
+      this.loading = false;
+   
+     
+      
+    })
+
+
+  }
+
+
+  getAll() {
+    this.loading = true;
+
+    this.campeonatoServices.getAll().pipe().subscribe(data =>{
+     
+      this.loading = false;
+
+      if(data["message"] == "Expired token"){
+        this.openDialogSuccess();
+      }else{
+        this.dataCampeonato = data['data'];
+      }
+
+
+    }, error => {
+      console.log(error)
+      this.loading = false;
+   
+     
+      
+    })
+
+
   }
 
   openDialogSuccess(){
@@ -53,7 +106,7 @@ export class DashboardComponent implements OnInit {
   getClassificacao() {
     this.loading = true;
 
-    this.campeonatoServices.getClassificacao().pipe().subscribe(data =>{
+    this.campeonatoServices.getClassificacao(this.campeonatos).pipe().subscribe(data =>{
       
       this.loading = false;
 

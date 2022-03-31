@@ -103,28 +103,28 @@
 .bg-gradient-danger
 {
     /*background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;*/
-    background: linear-gradient(87deg, #1b453b 0, #1b453b 100%) !important;
+    background: linear-gradient(87deg, #8ac4cd 0, #295987 100%) !important;
 }
 
 .bg-gradient-dangerNew{
-    background: linear-gradient(311deg, #1b453b 0, #6e7758 100%) !important;
+    background: linear-gradient(87deg, #8ac4cd 0, #295987 100%) !important;
 }
 .fill-default {
-    fill: #6e7758 !important;
+    fill: #1e4669 !important;
 }
 
 .btn-primary {
     color: #fff;
-    background-color: #9aad6c;
-    border-color: #9aad6c;
+    background-color: #598692;
+    border-color: #598692;
     box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
 }
 
 .page-item.active .page-link {
     z-index: 3;
     color: #fff;
-    background-color: #9aad6c;
-    border-color: #9aad6c;
+    background-color: #598692;
+    border-color: #598692;
 }
 
 a {
@@ -133,10 +133,14 @@ a {
     background-color: transparent;
 }
 
+.card-body{
+    background: #d9e1e9 !important;
+}
+
 .btn-default {
     color: #fff;
-    background-color: #939a21;
-    border-color: #939a21;
+    background-color: #598692;
+    border-color: #598692;
     box-shadow: 0 4px 6px rgb(50 50 93 / 11%), 0 1px 3px rgb(0 0 0 / 8%);
   }
 

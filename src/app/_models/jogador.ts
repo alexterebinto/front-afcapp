@@ -8,4 +8,8 @@
     matricula: string;
     dataNascimento: string;
     numeroCamisa: string;
+    cpf: string;
+    rg: string;
+    federado: string;
+    altura: string;
 }

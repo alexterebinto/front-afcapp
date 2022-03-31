@@ -38,6 +38,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'jogos/:id',    component: JogosComponent },
     { path: 'jogos',    component: JogosComponent },
     { path: 'rodada/:id/:ids/:sname',    component: RodadaComponent },
+    { path: '',    component: DashboardComponent },
 
    
 ];

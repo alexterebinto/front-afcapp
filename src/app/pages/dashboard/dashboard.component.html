@@ -18,6 +18,7 @@
                   </div>
                 </div>
               </div>
+             
               <p class="mt-3 mb-0 text-muted text-sm">
                 <!--<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
                 <span class="text-nowrap">último mês</span>-->
@@ -89,6 +90,24 @@
           </div>
         </div>
       </div>
+      <div class="row" style="margin-top: 20px;">
+        <div class="col-xl-10 col-lg-10">
+          
+            <div class="form-group">
+              <select name="campeonatos" class="form-control form-control-alternative" [(ngModel)]="campeonatos">
+                <option [ngValue]="null" disabled>Selecione o campeonato</option>
+                <option *ngFor="let campeonato of dataCampeonato" [ngValue]="campeonato.id">{{campeonato.s_name}}</option>
+              </select>
+             
+            </div>
+        </div>
+        <div class="col-xl-2 col-lg-2">
+          <button class="btn btn-icon btn-default" (click)="getClassificacao()" style="width: 100%;background: #f6f9fc;border: 1px solid #666;color: #666;">
+            <span class="btn-inner--icon"><i class="ni ni-fat-search"></i></span>
+            <span class="btn-inner--text">Buscar</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -100,7 +119,7 @@
         <div class="card-header border-0">
           <div class="row align-items-center">
             <div class="col">
-              <h3 class="mb-0">Classificação - CAMPEONATO INTERNO DE FUTEBOL SOCIETY - {{grupos.group}}</h3>
+              <h3 class="mb-0">Classificação - {{grupos.group}}</h3>
             </div>
           </div>
         </div>
@@ -123,7 +142,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let time of grupos.teams">
-                <th scope="col"><span style="width: 20px;height: 20px;background: transparent; position: relative;float: left;font-size: 14px;">{{time.position}}</span> <span><img style="width: 30px;" src="https://ccfutebolsociety.com/storage/teams/{{time.emblem}}"></span></th>
+                <th scope="col"><span style="width: 20px;height: 20px;background: transparent; position: relative;float: left;font-size: 14px;">{{time.position}}</span> <span><img style="width: 30px;" src="https://images.sportmanager.com.br/cab/teams/{{time.emblem}}"></span></th>
                 <th scope="col">{{time.team_name}}</th>
                 <th scope="col">{{time.played}}</th>
                 <th scope="col">{{time.win}}</th>

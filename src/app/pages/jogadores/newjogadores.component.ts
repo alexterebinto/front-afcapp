@@ -180,7 +180,10 @@ export class NewJogadoresComponent implements OnInit {
     this.jogadoresService.getId(id).pipe().subscribe(data =>{
      
       this.jogador = data["data"];
-      this.imageUrl = "https://ccfutebolsociety.com/storage/players/"+this.jogador.def_img
+      //console.log( this.jogador)
+      var date = this.jogador.dataNascimento.split("-");
+      this.jogador.dataNascimento = date[2]+"-"+date[1]+"-"+date[0];
+      this.imageUrl = "https://images.sportmanager.com.br/cab/players/"+this.jogador.def_img
       this.loading = false;
     }, error => {
       console.log(error)

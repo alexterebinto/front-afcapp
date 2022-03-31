@@ -44,6 +44,37 @@
                 </div>
               </div>
               <div class="row">
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="cpf">CPF</label>
+                    <input type="text" name="cpf" mask="000.000.000-00" cpf="cpf" class="form-control form-control-alternative" [(ngModel)]="jogador.cpf">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="rg">RG</label>
+                    <input type="text" name="rg" id="rg" class="form-control form-control-alternative" [(ngModel)]="jogador.rg">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="altura">Altura</label>
+                    <input type="text" name="altura" id="altura" class="form-control form-control-alternative" [(ngModel)]="jogador.altura">
+                  </div>
+                </div>
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label class="form-control-label" for="federado">Federado</label>
+                    <select name="federado" class="form-control form-control-alternative" [(ngModel)]="jogador.federado">
+                      <option value="null" disabled>Selecione o time</option>
+                      <option value="S">Sim</option>
+                      <option value="N">Não</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
                 <div  class="col-lg-1">
                   <img src={{imageUrl}} style="width: 100%" />
                 </div>

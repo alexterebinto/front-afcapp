@@ -102,12 +102,13 @@
 
 .azulPanel > .mat-dialog-container > medlog-dialogmatch > .mat-dialog-content{
   margin: auto !important;
+  background: #d9e1e9 !important;
 }
 
 .bg-gradient-danger
 {
     /*background: linear-gradient(87deg, #f5365c 0, #f56036 100%) !important;*/
-    background: linear-gradient(87deg, #1b453b 0, #1b453b 100%) !important;
+    background: linear-gradient(87deg, #8ac4cd 0, #295987 100%) !important;
 }
 
 .p-multiselect {
@@ -658,8 +659,8 @@ p-calendar .p-datepicker {
 
 .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
   background: #ffffff;
-  border-color: #9aad6c;
-  color: #9aad6c;
+  border-color: #598692;
+  color: #598692;
 }
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
   transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
