@@ -72,7 +72,7 @@ export class DialogEventComponent implements OnInit {
       this.loading = true;
       this.groupedTimes = [];
       this.jogadoresServices.getAllPlayeresTeam(idTeam).pipe().subscribe(data =>{
-        
+        this.loading = false;
         let subItem = [];
         for(var i = 0; i < data["data"][0]["players"].length; i++){
           subItem.push({label: data["data"][0]["players"][i]["first_name"]+ " "+ data["data"][0]["players"][i]["last_name"], value:data["data"][0]["players"][i]["id"], team: data["data"][0]["id"] })

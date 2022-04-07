@@ -129,7 +129,7 @@ openDialogError(message){
      
       this.time = data["data"];
       console.log(this.time)
-      this.imageUrl = "https://images.sportmanager.com.br/curitibano/teams/"+this.time.t_emblem
+      this.imageUrl = "http://images.ccfutebolsociety.com/curitibano/teams/"+this.time.t_emblem
       this.loading = false;
     }, error => {
       console.log(error)
