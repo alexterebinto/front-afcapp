@@ -41,6 +41,7 @@
                 <th scope="col">Data</th>
                 <th scope="col">Horário</th>
                 <th scope="col" style="width: 130px;">Acessar</th>
+                <th scope="col" style="width: 130px;">Visualizar</th>
                 <th scope="col" style="width: 130px;">Súmula</th>
                
               </tr>
@@ -59,6 +60,13 @@
                     <span class="btn-inner--text">Acessar jogo</span>
                   </a>
                 </td>
+                <td>
+                  <a (click)="view(rodada.id)" class="btn btn-icon btn-sm btn-default">
+                    <span class="btn-inner--icon"><i class="ni ni-collection"></i></span>
+                    <span class="btn-inner--text">Visualizar súmula</span>
+                  </a>
+                </td>
+
                 <td>
                   <a (click)="submit(rodada.id)" class="btn btn-icon btn-sm btn-default">
                     <span class="btn-inner--icon"><i class="ni ni-collection"></i></span>
@@ -99,7 +107,7 @@
       </div>
     </div>
   </div>
-  <form id="htmlForm" #htmlForm target="_blank" method="POST" action="https://ccfutebolsociety.com/sumula/imprimirSumulaFut7.php">
+  <form id="htmlForm" #htmlForm target="_blank" method="POST" action="{{urltopost}}">
     <input type="hidden" name="id_match" id="id_match" [(ngModel)]="id_match" value="{{id_match}}">
     <input type="hidden" name="token" id="token" [(ngModel)]="token" value="{{token}}">
 </form>

@@ -5,6 +5,9 @@ export class Jogo {
     m_id: string;
     team1_id:string;
     team2_id: string;
+    id_referee1: string;
+    id_referee2: string;
+    id_referee3: string;
     score1: string;
     score2: string;
     published: string;

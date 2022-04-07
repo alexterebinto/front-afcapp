@@ -9,6 +9,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import {PrimeNGConfig, SelectItemGroup} from 'primeng/api';
 import { JogadoresService } from 'src/app/_services/jogadores.service';
 import { Jogo } from 'src/app/_models/jogo';
+import { Arbitros } from 'src/app/_models/arbitros';
 
 export interface DialogData {
   description: string;
@@ -43,12 +44,14 @@ export class DialogEventComponent implements OnInit {
     time1;
     time2;
     pt;
+    dataJuiz = new Arbitros();
     
     realizado = false;
     
 
     ngOnInit(){
       var strs = this.data.rodada.match_descr.split(" X ");
+      console.log(strs)
       this.time1 = strs[0];
       this.time2 = strs[1];
       //this.events.push({ e_id: 0, player_id: 0, match_id: this.data.rodada.id, ecount: 0, minutes: 0, t_id: 0})
@@ -65,6 +68,8 @@ export class DialogEventComponent implements OnInit {
           dateFormat: 'mm/dd/yy'
         }
       );
+
+      this.getArbitros();
       
     }
 
@@ -186,8 +191,8 @@ export class DialogEventComponent implements OnInit {
         }
 
         var strs = this.dataJogo.match_descr.split(" X ");
-        this.time1 = strs[0];
-        this.time2 = strs[1];
+        //this.time1 = strs[0];
+        //this.time2 = strs[1];
         
         this.loading = false;
 
@@ -280,6 +285,26 @@ export class DialogEventComponent implements OnInit {
 
 
   }
+
+
+  getArbitros() {
+ 
+    
+    this.temporadaServices.getArbitros().pipe().subscribe(data =>{
+      console.log(data)
+      this.dataJuiz = data["data"];
+      
+    }, error => {
+      console.log(error)
+      this.loading = false;
+   
+     
+      
+    })
+
+
+  }
+
 
   onCancelClick(): void {
     this.dialogRef.close("0");

@@ -34,6 +34,7 @@ export class RodadaComponent implements OnInit {
   token;
   temporada;
   isSelected = false;
+  urltopost;
 
   ngOnInit() {
 
@@ -80,6 +81,21 @@ export class RodadaComponent implements OnInit {
 
 
   submit(idrodada) {
+    this.urltopost = "https://api-cab.sportmanager.com.br/api/v1/sumulaFutebolCampo/"+idrodada;
+    var usuario = JSON.parse(localStorage.getItem('currentUser'));
+    this.id_match = idrodada;
+    this.token = usuario.access_token
+
+    setTimeout(function () {
+      this.htmlForm.nativeElement.submit();
+    }.bind(this), 200);
+
+
+   
+  }
+
+  view(idrodada) {
+    this.urltopost = "https://api-cab.sportmanager.com.br/api/v1/preview/"+idrodada;
     var usuario = JSON.parse(localStorage.getItem('currentUser'));
     this.id_match = idrodada;
     this.token = usuario.access_token

@@ -146,5 +146,16 @@ export class TemporadaService {
         
     }
 
+    getArbitros(){
+        var usuario = JSON.parse(localStorage.getItem('currentUser'));
+        var header = new HttpHeaders().set('Authorization', 'Bearer '+ usuario.access_token)
+        
+        if(config.production){
+            return this.http.get(`${config.apiEndpoint}/arbitros/`, { headers: header });
+        }else{
+            return this.http.post<any>(`${config.proxy}`+'?t=g&jwt='+usuario.access_token+'&u='+`${config.apiEndpoint}/arbitros/`, { headers: config.httpHeader } )
+        }
+    }
+
 
 }

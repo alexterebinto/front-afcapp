@@ -33,9 +33,14 @@ export class DashboardComponent implements OnInit {
   dataSource = [];
   dataCampeonato;
   campeonatos;
+  atletas = 0;
+  campeonatosDash = 0;
+  times = 0;
+  usuarios = 0;
   ngOnInit() {
    // this.getClassificacao();
     this.getAllTemporada()
+    this.getDash()
   }
 
 
@@ -87,6 +92,39 @@ export class DashboardComponent implements OnInit {
 
 
   }
+
+  getDash() {
+    
+
+    this.campeonatoServices.getDash().pipe().subscribe(data =>{
+     
+   
+
+      if(data["message"] == "Expired token"){
+        this.openDialogSuccess();
+      }else{
+        console.log(data)
+
+        this.atletas = data["data"]["atletas"];
+        this.campeonatosDash = data["data"]["campeonatos"];
+        this.times = data["data"]["times"];
+        this.usuarios = data["data"]["usuarios"];
+      }
+
+
+    }, error => {
+      console.log(error)
+     
+   
+     
+      
+    })
+
+
+  }
+
+
+
 
   openDialogSuccess(){
     const dialogRef = this.dialog.open(DialogComponent, {
