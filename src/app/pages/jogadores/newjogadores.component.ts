@@ -124,8 +124,12 @@ export class NewJogadoresComponent implements OnInit {
 
       this.loading = true;
 
-      var splitDate = this.jogador.dataNascimento.split("-");
-      this.jogador.dataNascimento = splitDate[2]+"-"+splitDate[1]+"-"+splitDate[0];
+     
+      if(this.jogador.dataNascimento){
+        var splitDate = this.jogador.dataNascimento.split("-");
+        this.jogador.dataNascimento = splitDate[2]+"-"+splitDate[1]+"-"+splitDate[0];
+      }
+    
 
       if(this.isEdit){
         this.jogadoresService.update(this.jogador, this.idJogador).pipe().subscribe(data =>{

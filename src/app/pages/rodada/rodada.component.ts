@@ -163,8 +163,7 @@ export class RodadaComponent implements OnInit {
   
     dialogRef.afterClosed().subscribe(result => {
       var dataReturn = result
-      //console.log(dataReturn.m_date);
-
+      
       var splitDate = dataReturn.m_date.toString().split("/")
       var newDate;
       var newtime;
@@ -198,7 +197,7 @@ export class RodadaComponent implements OnInit {
           if(data["type"]=="success"){
             this.openDialogSuccessPost(data["message"])
           }else{
-            this.openDialogError(data["message"])
+            this.openDialogError(JSON.stringify(data))
           }
     
          

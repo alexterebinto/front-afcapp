@@ -84,12 +84,12 @@ export class DialogEventComponent implements OnInit {
               items: subItem
             }
             this.groupedTimes.push(item);
-            this.getPlayer2(this.data.rodada.team2_id);
-            this.getEvents();
+            
           }
         
         }
-
+        this.getPlayer2(this.data.rodada.team2_id);
+        this.getEvents();
         
         //this.loading = false;
 
